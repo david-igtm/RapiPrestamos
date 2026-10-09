@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<link rel="manifest" href="manifest.json">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rapiprestamos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #0b5ed7;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            background-color: #0b5ed7;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #084298;
+        }
+        .info-box {
+            background-color: #e7f1ff;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Rapiprestamos</h2>
+        
+        <div class="info-box">
+            <b>Micro prestamo disponible:</b> $50<br>
+            <b>Modalidad:</b> 2 cuotas quincenales de $32.5 vía Pago Móvil.
+        </div>
+
+        <form id="prestamoForm">
+            <div class="form-group">
+                <label>Nombre y Apellido</label>
+                <input type="text" id="nombre" required placeholder="Ej: Pedro Perez">
+            </div>
+            
+            <div class="form-group">
+                <label>Número de Cédula</label>
+                <input type="text" id="cedula" required placeholder="Ej: V-12345678">
+            </div>
+
+            <div class="form-group">
+                <label>Banco para Pago Móvil</label>
+                <select id="banco" required>
+                    <option value="">Selecciona tu banco</option>
+                    <option value="Banesco">Banesco</option>
+                    <option value="Mercantil">Mercantil</option>
+                    <option value="BNC">BNC</option>
+                    <option value="Provincial">Provincial</option>
+                    <option value="BDV">Banco de Venezuela</option>
+                    <option value="BOD">Bicentenario / Otros</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Teléfono para Pago Móvil</label>
+                <input type="tel" id="telefono" required placeholder="Ej: 04141234567">
+            </div>
+
+            <button type="submit">Solicitar Préstamo de $50</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('prestamoForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nombre = document.getElementById('nombre').value;
+            alert(`¡Solicitud enviada, ${nombre}! Pronto revisaremos tus datos para validar y procesar tu solicitud de prestamo.`);
+            this.reset();
+        });
+    </script>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js')
+      .then(() => console.log('Service Worker registrado con éxito'))
+      .catch((err) => console.log('Error al registrar Service Worker', err));
+  }
+</script>
+</body>
+</html>
